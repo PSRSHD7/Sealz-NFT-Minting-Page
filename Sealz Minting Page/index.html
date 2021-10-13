@@ -10,10 +10,16 @@
     <body>
         <h1>MINT YOUR SEALZ</h1>
         <H2> 0.06 ETHER EACH</H2>
-        <p style="text-align:center;"><img src="Sealz-NFT.gif" width="500" height="600"></p>
+        <p style="text-align:center;"><img src="Sealz-NFT.gif" height="500"></p>
         <h3> How Many SEALz would you like?</h3>
-        <p style="text-align:center;"><input></p>
-        <button class="button">MINT MY SEALz</button>
+	<div class="mint-container">
+		<div class="mint-amt">
+			<input type="number" maxlength="2" min="1" step="1" max="20" value="1" id="myRange">
+			<p id="max-mint-num">20 max</p>
+		</div>
+		<button class="button" id="mint">MINT MY SEALz</button>
+		<p class="supply"></p>
+	</div>
     </body>
 
     <div class="footer">
@@ -23,4 +29,21 @@
             Copyright Pinnipedia Labs 2021 All rights Reserved.
         </p>
       </div>
+	<script type="text/javascript" src="https://unpkg.com/web3@1.5.2/dist/web3.min.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/notiflix@3.0.2/dist/notiflix-aio-3.0.2.min.js"></script>
+	<script src="abi.js"></script>
+	<script src="config.js"></script>
+	<script src="wallet.js"></script>
+	<script>
+	registerSupplyElement(document.querySelector('p.supply'), 9999)
+	registerConnectButton(document.querySelector('button#connect'))
+	registerMintButton(document.querySelector('button#mint'), document.querySelector('#myRange'))
+	document.querySelector('p#max-mint-num').addEventListener('click', () => {
+		document.querySelector('#myRange').value = 20
+	});
+	</script>
 </html>
