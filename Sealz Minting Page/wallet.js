@@ -119,12 +119,12 @@ let registerConnectButton = async (element) => {
 
 let registerMintButton = async (element, amt_element) => {
 	element.addEventListener('click', async () => {
-		let isMintActive = await getIsMintActive()
+		/*let isMintActive = await getIsMintActive()
 		console.log(isMintActive)
 		if(!isMintActive) {
 			Notiflix.Notify.failure("Mint is not active yet!")
 			return
-		}
+		}*/
 		await contract.methods[config.contract.mint_function](amt_element.value).send({
 			from: accountData.account,
 			value: amt_element.value * config.contract.mint_price
