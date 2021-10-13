@@ -8,6 +8,12 @@ let web3, provider, selectedAccount, accountData, contract;
 let supplyInterval, supplyElement;
 
 const providerOptions = {
+	walletconnect: {
+		package: window.WalletConnectProvider.default,
+		options: {
+			infuraId: "24fc637f581e49f7815d171634002d2d",
+		}
+	},
 };
 
 const web3Modal = new Web3Modal({
